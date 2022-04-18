@@ -13,7 +13,7 @@ async function findAlllanches() {
       // Segundo parâmetro que o conteúdo a ser adicionado
       `
           <div class="lancheListaItem">
-            <div>
+            <div class="inside-card-space">
               <div class="lancheListaItem__nome">${lanches.nome}</div>
               <div class="lancheListaItem__preco">R$ ${lanches.preco.toFixed(2)}</div>
               <div class="lancheListaItem__descricao">
@@ -25,7 +25,7 @@ async function findAlllanches() {
               src=${lanches.img}
               alt=${`${lanches.nome}`}
             />
-          </div><br>
+          </div>
         `,
     );
   });
