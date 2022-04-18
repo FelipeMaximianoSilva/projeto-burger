@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  /* background-color: brown; */
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-image: url('https://thumbs.dreamstime.com/b/pesto-burger-ingredients-floating-dark-wooden-background-isolated-vertical-hamburger-bun-cheese-tomato-lettuce-cutlet-menu-design-177814376.jpg'); */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: rgb(255, 0, 0) solid 2px;
+  width: 95%;
+  background-color: black;
+  color: white;
+  gap: 5%;
+}
+
+#idLancheButton:hover {
+  cursor: pointer;
+}
+
+.lanche-escolhido-espaco {
+  margin: 2%;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  flex-wrap: wrap;
+  border: orangered solid 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+.lancheCardItem {
+  gap: 100px;
+}
+
+.Home__container {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+#lancheEscolhido {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border: rgb(2, 228, 74) solid 2px;
+  background-color: rgba(255, 166, 0, 0.858);
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
+  color: black;
+  font-size: 1.4rem;
+  gap: 5%;
+  margin: 2%;
+}
+
+#lancheEscolhido img {
+  width: 85%;
+  margin: 5%;
+}
+
+.lanche-escolhido-espaco > #lancheEscolhido {
+    width: 80%;
+}
+
+.lancheLista {
+  width: 80%;
+  border: black solid 4px;
+  background-color: grey;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5%;
+}
+
+.lancheCardText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.lancheListaItem {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border: rgb(2, 228, 74) solid 2px;
+  background-color: rgba(255, 166, 0, 0.858);
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
+  width: 30%;
+  color: black;
+  font-size: 1.4rem;
+  gap: 5%;
+  margin: 2%;
+}
+
+@media (max-width: 690px) {
+  .lancheListaItem {
+    font-size: 1rem;
+  }
+}
+
+.lancheListaItem img {
+  width: 85%;
+  margin: 5%;
+}
+
+.lancheCardItem__nome {
+  margin-bottom: 20px;
+}

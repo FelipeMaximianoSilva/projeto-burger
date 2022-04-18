@@ -1,12 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Olá Mundo</h1>
-</body>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lanchonete</title>
+    <link rel="stylesheet" href="../public/css/style.css" />
+  </head>
+  <body>
+    <div class="Home">
+      <!-- Listagem de o Lanche pelo seu ID -->
+    </br>
+      <h2>Pesquisar Lanche</h2>
+      <div class="lanche-escolhido-espaco">
+        <!-- Área do form -->
+        <div id="lanche-escolhido-input-espaco">
+          <input
+            type="number"
+            id="idLanche"
+            placeholder="Digite o ID do Lanche"
+          />
+          <button id="idLancheButton" onclick="findByIdLanches()">
+            ESCOLHER
+          </button><br><br><br>
+        </div>
+        <!-- Área de renderizar o Lanche encontrada -->
+        <div id="lancheEscolhido"></div>
+      </div>
+
+      <!-- Listagem de todas os lanches -->
+      <h2>Lanches Disponíveis</h2> <br>
+
+      <div class="Home__container">
+        <!-- Vamos renderizar todas os lanches disponíveis no backend aqui, na div com id igual a lanchesList-->
+        <div class="lancheLista" id="lancheList"></div>
+      </div>
+    </div>
+    <!-- Script -->
+    <script src="../public/js/scritpt.js"></script>
+  </body>
 </html>
