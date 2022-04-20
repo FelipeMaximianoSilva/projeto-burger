@@ -7,7 +7,7 @@
     <title>lanchonete</title>
     <link rel="stylesheet" href="../public/css/style.css" />
   </head>
-  <body>
+  <>
     <div class="page-head">
       <h1>El Burger</h1>
     </div>
@@ -19,7 +19,7 @@
         <!-- Área do form -->
         <div id="lanche-escolhido-input-espaco">
           <input
-            type="number"
+            type="text"
             id="idLanche"
             placeholder="Digite o ID do Lanche"
           />
@@ -30,6 +30,59 @@
         <!-- Área de renderizar o Lanche encontrada -->
         <div id="lancheEscolhido"><h3>Escolha o Lanche de sua preferência!</h3></div>
       </div>
+
+       <!-- Área do modal para criar o lanche -->
+       <section class="button-modal-create">
+        <button
+          type="button"
+          id="createLancheButton"
+          onclick="abrirModalCadastro()"
+        >
+          Cadastrar Lanche
+        </button>
+      </section>
+
+      <section class="modal-overlay" id="overlay">
+        <div class="modal">
+          <div class="modal-header">
+            <h2>Cadastrar um Lanche</h2>
+            <a onclick="fecharModalCadastro()" class="close-modal">x</a>
+          </div>
+
+          <div class="modal-body">
+            <div>
+              <input
+                type="text"
+                name="nome"
+                id="nome"
+                placeholder="Nome do Lanche"
+              />
+              <input
+                type="text"
+                name="preco"
+                id="preco"
+                placeholder="Preço do Lanche"
+              />
+              <textarea
+                type="text"
+                name="description"
+                id="description"
+                placeholder="Descrição do Lanche"
+                rows="5"
+              ></textarea>
+              <input
+                type="text"
+                name="img"
+                id="img"
+                placeholder="Link da Foto do Lanche"
+              />
+              <button class="default-button" onclick="createLanche()">
+                Cadastrar
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Listagem de todas os lanches -->
       <h2>Lanches Disponíveis</h2> <br>

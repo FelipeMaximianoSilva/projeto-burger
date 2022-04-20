@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3001/cardapio';
+const baseUrl = 'http://localhost:3001/lanches';
 
 // Pegar todas os lanches do backend
 async function findAlllanches() {
@@ -15,7 +15,7 @@ async function findAlllanches() {
           <div class="lancheListaItem">
             <div class="inside-card-space">
               <div class="lancheListaItem__nome">${lanches.nome}</div>
-              <div class="lancheListaItem__preco">R$ ${lanches.preco.toFixed(2)}</div>
+              <div class="lancheListaItem__preco">R$ ${lanches.preco}</div>
               <div class="lancheListaItem__descricao">
                 ${lanches.description}
               </div>
@@ -47,7 +47,7 @@ const findByIdLanches = async () => {
       <div class="lancheCardItem">
         <div>
           <div class="lancheCardItem__nome">${lanche.nome}</div>
-          <div class="lancheCardItem__preco">R$ ${lanche.preco.toFixed(2)}</div>
+          <div class="lancheCardItem__preco">R$ ${lanche.preco}</div>
           <div class="lancheCardItem__descricao">${lanche.description}</div>
         </div>
         <img
@@ -58,3 +58,61 @@ const findByIdLanches = async () => {
       </div>
     `;
 };
+
+function abrirModalCadastro() {
+  document.querySelector('.modal-overlay').style.display = 'flex';
+}
+
+function limparModal() {
+  const nome = (document.querySelector('#nome').value = '');
+  const preco = (document.querySelector('#preco').value = 0);
+  const descricao = (document.querySelector('#description').value = '');
+  const img = (document.querySelector('#img').value = '');
+}
+
+function fecharModalCadastro() {
+  document.querySelector('.modal-overlay').style.display = 'none';
+
+  limparModal();
+}
+
+async function createLanche() {
+  const nome = document.querySelector('#nome').value;
+  const preco = document.querySelector('#preco').value;
+  const description = document.querySelector('#description').value;
+  const img = document.querySelector('#img').value;
+
+  const lanches = {
+    nome,
+    preco,
+    description,
+    img,
+  };
+
+  const response = await fetch(baseUrl + '/create', {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    mode: 'cors',
+    body: JSON.stringify(lanches),
+  });
+
+  const novoLanche = await response.json();
+
+  const html = `<div class="lancheListaItem">
+    <div>
+      <div class="lancheListaItem__nome">${novoLanche.nome}</div>
+      <div class="lancheListaItem__preco">R$ ${novoLanche.preco}</div>
+      <div class="lancheListaItem__descricao">${novoLanche.description}</div>
+    </div>
+    <img class="lancheListaItem__foto" src=${
+      novoLanche.img
+    } alt=${`${novoLanche.nome}`} />
+  </div>`;
+
+  document.getElementById('lanchesList').insertAdjacentHTML('beforeend', html);
+
+  console.log('Criou o lanche');
+  fecharModalCadastro();
+}
