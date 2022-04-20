@@ -55,6 +55,8 @@ const findByIdLanches = async () => {
           src=${lanche.img}
           alt=${`${lanche.nome}`}
         />
+        <button class="buttons">Editar</button>
+        <button class="buttons" onclick="">Excluir</button>
       </div>
     `;
 };
