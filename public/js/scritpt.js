@@ -111,7 +111,7 @@ async function createLanche() {
     } alt=${`${novoLanche.nome}`} />
   </div>`;
 
-  document.getElementById('lanchesList').insertAdjacentHTML('beforeend', html);
+  document.getElementById('lancheList').insertAdjacentHTML('beforeend', html);
 
   console.log('Criou o lanche');
   fecharModalCadastro();

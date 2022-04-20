@@ -4,7 +4,6 @@ import {
   createLanchesService,
   updateLanchesService,
   deleteLanchesService,
-  // getCardapioService,
 } from '../services/lanches.services.js';
 
 // export const getCardapio = (req, res) => {
@@ -19,7 +18,7 @@ export const getFindLanches = (req, res) => {
 
 export const getFindLanchesByID = (req, res) => {
   const idParam = req.params.id;
-  const chosenLanche = findLanchesByIdService();
+  const chosenLanche = findLanchesByIdService(idParam);
   res.send(chosenLanche);
 };
 
