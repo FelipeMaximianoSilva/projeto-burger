@@ -11,7 +11,9 @@ import cors from 'cors';
 import { router } from './src/routes/lanches.routes.js';
 
 // Importando o Banco de Dados
-import { lanches } from './src/services/lanches.services.js';
+import { connectToDatabase } from './src/database/db.js';
+import { lanches } from './src/model/lanches.js';
+connectToDatabase();
 
 // Informa a pasta raiz
 const __dirname = path.resolve(path.dirname(''));
@@ -32,7 +34,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Instruindo o app a usar as rotas da pasta SRC
-// app.use(routes)
+app.use(router);
 
 // Configurando o CORS para que nossa aplicação seja visivel pelo front
 app.use(cors());
@@ -47,23 +49,3 @@ app.listen(port, () => {
 //ROTAS
 
 app.use('/lanches', router);
-
-// app.get('/', (req, res) => {
-//   res.send('Olá mundo');
-// });
-
-app.get('/lanches', (req, res) => {
-  res.send(lanches);
-});
-
-// // Lista todas as pelates do nosso array
-// app.get('/cardapio/find-lanches', (req, res) => {
-//   res.send(lanches);
-// });
-
-// // Listar uma paleta pelo seu ID
-// app.get('/cardapio/find-lanches/:id', (req, res) => {
-//   const idParam = req.params.id;
-//   const chosenLanche = lanches.find((lanches) => lanches.id == idParam);
-//   res.send(chosenLanche);
-// });

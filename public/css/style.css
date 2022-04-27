@@ -86,14 +86,14 @@ body {
   text-align: center;
   align-items: center;
   justify-content: center;
-  gap: 8%;
+  gap: 6%;
   border: rgb(0, 0, 0) solid 4px;
   border-radius: 4%;
   background-color: rgba(255, 166, 0, 0.858);
   flex-direction: column-reverse;
   flex-wrap: wrap;
   width: 23vw;
-  height: 60vh;
+  height: 70vh;
   color: black;
   font-size: 1.4vw;
   margin-bottom: 2%;
@@ -132,6 +132,12 @@ body {
   justify-content: center;
   text-align: center;
   flex-direction: column;
+}
+
+.inside-card-space {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
 }
 
 .lancheListaItem {
@@ -179,7 +185,7 @@ body {
 
 .lancheListaItem img {
   width: 85%;
-  height: 62%;
+  height: 50%;
   margin-top: 5%;
   border-radius: 5%;
   border: black solid 2px;
@@ -204,7 +210,7 @@ input[type='number']:focus {
   width: 90%;
 }
 
-button {
+#idLancheButton, #createLancheButton {
   background-color: rgba(255, 166, 0, 0.858);
   border: black solid 2px;
   font-family: 'Ms Madi', cursive;
@@ -226,7 +232,7 @@ button {
 }
 
 /*-------------------------------------------*/
-/* Inicio do css do modal para criar paletas */
+/* Inicio do css do modal para criar lanches */
 /*-------------------------------------------*/
 
 .modal-overlay {
@@ -321,11 +327,11 @@ textarea {
   align-items: center;
 }
 
-#createPaletaButton {
+#createLancheButton {
   background-color: transparent;
-  border: 2px solid #9400d3;
+  border: 2px solid goldenrod;
   padding: 0.4rem;
-  color: #9400d3;
+  color: black;
   font-weight: 600;
   border-radius: 0.2rem;
   width: 330px;
@@ -335,7 +341,20 @@ textarea {
   font-size: 1rem;
 }
 
-#createPaletaButton:hover {
-  background-color: #9400d3;
-  color: #ffffff;
+#createLancheButton:hover {
+  background-color: gold;
+  color: black;
+}
+
+.change-buttons {
+  width: 30%;
+  height: 6%;
+  background-color: rgba(255, 166, 0, 0.858);
+  border: black solid 2px;
+  font-family: 'Ms Madi', cursive;
+  border-radius: 10%;
+  letter-spacing: 2px;
+  font-weight: bold;
+  color: black;
+  font-weight: bold;
 }

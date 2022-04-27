@@ -1,0 +1,30 @@
+[
+  {
+    "nome": "Cheese Burger",
+    "preco": 10,
+    "img": "https://sachefmio.blob.core.windows.net/fotos/x-burguer-73517.jpg",
+    "description": "Pão, Salada, Queijo, Hamburger Bovino",
+    "tipo": "1"
+  },
+  {
+    "nome": "Chicken Burger",
+    "preco": 12.5,
+    "img": "https://d3sn2rlrwxy0ce.cloudfront.net/chicken-jr-d_2021-09-16-143722_moyk.jpg?mtime=20210916103723&focal=none",
+    "description": "Pão, Salada, Queijo, Frango Empanado",
+    "tipo": "2"
+  },
+  {
+    "nome": "Cheese Bacon Burger",
+    "preco": 14.5,
+    "img": "https://sachefmio.blob.core.windows.net/fotos/x-burguer-73517.jpg",
+    "description": "Pão, Salada, Bacon, Queijo, Hamburger Bovino",
+    "tipo": "1"
+  },
+  {
+    "nome": "Veggie Burger",
+    "preco": 9,
+    "img": "https://www.thespruceeats.com/thmb/KAgMssHoQUmx30uuYL_FTahXA0A=/2048x1360/filters:fill(auto,1)/vegan-mushroom-bean-burger-recipe-3378623-13_preview1-5b241897fa6bcc0036d2c9bf.jpeg",
+    "description": "Pão, Salada, Tofu, Double burger de Cogumelos",
+    "tipo": "3"
+  }
+]

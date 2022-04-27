@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import {
   findLanchesService,
   findLanchesByIdService,
@@ -6,47 +7,41 @@ import {
   deleteLanchesService,
 } from '../services/lanches.services.js';
 
-// export const getCardapio = (req, res) => {
-//   const CardapioService = getCardapioService();
-//   res.send(CardapioService);
-// };
-
-export const getFindLanches = (req, res) => {
-  const allLanches = findLanchesService();
+export const getFindLanches = async (req, res) => {
+  const allLanches = await findLanchesService();
+  if (allLanches.length == 0) {
+    return res
+      .status(404)
+      .send({ message: 'Não existe nenhum lanche no sistema!' });
+  }
   res.send(allLanches);
 };
 
-export const getFindLanchesByID = (req, res) => {
+export const getFindLanchesByID = async (req, res) => {
   const idParam = req.params.id;
-  const chosenLanche = findLanchesByIdService(idParam);
+  const chosenLanche = await findLanchesByIdService(idParam);
+  if (!chosenLanche) {
+    return res.status(404).send({ message: 'Lanche não encontrado!' });
+  }
   res.send(chosenLanche);
 };
 
-export const postCreateLanchesController = (req, res) => {
+export const postCreateLanchesController = async (req, res) => {
   const lanche = req.body;
   const newLanche = createLanchesService(lanche);
   res.send(newLanche);
 };
 
-export const updateLanchesController = (req, res) => {
+export const updateLanchesController = async (req, res) => {
   const idParam = req.params.id;
   const lanchesEdit = req.body;
-  const updateLanches = updateLanchesService(idParam, lanchesEdit);
+  const updateLanches = await updateLanchesService(idParam, lanchesEdit);
   res.send(updateLanches);
 };
 
-export const deleteLancheController = (req, res) => {
+export const deleteLancheController = async (req, res) => {
   const idParam = req.params.id;
-  deleteLanchesService(idParam);
+  const chosenLanche = await findLanchesByIdService(idParam);
+  await deleteLanchesService(idParam);
   res.send({ message: 'Lanche deletado do cardápio!' });
 };
-
-// export const findLanchesService
-
-// export const findLanchesByIdService
-
-// export const createLanchesService = (newLanche)
-
-// export const updateLancheService = (id, lanchesEdited)
-
-// export const deleteLanchesService = (id)

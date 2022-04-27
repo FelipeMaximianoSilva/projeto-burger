@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>lanchonete</title>
     <link rel="stylesheet" href="../public/css/style.css" />
+    <script src="https://kit.fontawesome.com/14f4815201.js" crossorigin="anonymous"></script>
   </head>
   <>
     <div class="page-head">
@@ -15,7 +16,7 @@
       <!-- Listagem de o Lanche pelo seu ID -->
       </br>
       <h2>Pesquisar Lanche</h2>
-      <div class="lanche-escolhido-espaco">
+     <div class="lanche-escolhido-espaco">
         <!-- Área do form -->
         <div id="lanche-escolhido-input-espaco">
           <input
@@ -36,7 +37,7 @@
         <button
           type="button"
           id="createLancheButton"
-          onclick="abrirModalCadastro()"
+          onclick="showModal()"
         >
           Cadastrar Lanche
         </button>
@@ -46,7 +47,7 @@
         <div class="modal">
           <div class="modal-header">
             <h2>Cadastrar um Lanche</h2>
-            <a onclick="fecharModalCadastro()" class="close-modal">x</a>
+            <a onclick="closeModal()" class="close-modal">x</a>
           </div>
 
           <div class="modal-body">
@@ -76,6 +77,15 @@
                 id="img"
                 placeholder="Link da Foto do Lanche"
               />
+              <select
+                name="tipo"
+                id="tipo"
+                placeholder="Selecione o tipo de lanche"
+              >
+              <option value="1">Boi</option>
+              <option value="2">Frango</option>
+              <option value="3">Vegan</option>
+              </select>
               <button class="default-button" onclick="createLanche()">
                 Cadastrar
               </button>
@@ -83,6 +93,32 @@
           </div>
         </div>
       </section>
+
+      <!-- Modal delete -->
+    <section class="modal-overlay" id="overlay-delete">
+      <div class="modal">
+        <div class="modal-header">
+          <h2 id="title-header-modal">Confirmação de deleção</h2>
+          <a onclick="closeModalDelete()" class="close-modal">x</a>
+        </div>
+        <div class="modal-body-delete">
+          <p>Deseja realmente apagar essa paleta?</p>
+          <div class="btns-delete">
+            <button
+              class="btn-delete-no btn-delete"
+              onclick="closeModalDelete()"
+            >
+              Não
+            </button>
+            <button class="btn-delete-yes btn-delete" id="button-delete">
+              Sim
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Modal delete -->
+    <!-- /Modals -->
 
       <!-- Listagem de todas os lanches -->
       <h2>Lanches Disponíveis</h2> <br>
