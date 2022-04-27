@@ -24,3 +24,12 @@ export const validObjectBody = (req, res, next) => {
   }
   next();
 };
+
+export const validObjectBodyCarrinho = (req, res, next) => {
+  const carrinho = req.body;
+  carrinho.array.forEach((item) => {
+    if (!item || !item.lancheId || !item.quantidade) {
+      res.status(400).send({ message: 'Envie o todos os campos do carrinho!' });
+    }
+  });
+};

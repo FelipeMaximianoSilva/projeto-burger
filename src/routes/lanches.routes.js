@@ -6,7 +6,16 @@ import {
   updateLanchesController,
   deleteLancheController,
 } from '../controllers/lanchesController.js';
-import { validId, validObjectBody} from "../middlewares/lanche.middleware.js"
+import {
+  getCarrinho,
+  postCarrinho,
+  deleteCarrinho,
+} from '../controllers/carrinhoController.js';
+import {
+  validId,
+  validObjectBody,
+  validObjectBodyCarrinho,
+} from '../middlewares/lanche.middleware.js';
 
 export const router = express.Router();
 
@@ -23,3 +32,10 @@ router.put('/update/:id', validId, validObjectBody, updateLanchesController);
 
 //Rota para deletar
 router.delete('/delete/:id', validId, deleteLancheController);
+
+//Rotas de carrinho
+router.get('/all-carrinho', getCarrinho);
+
+router.post('/create-carrinho', postCarrinho, validObjectBodyCarrinho);
+
+router.delete('/delete-carrinho', deleteCarrinho);

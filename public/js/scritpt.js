@@ -36,7 +36,7 @@ findAlllanches();
 
 // Pegar um lanche pelo seu ID
 async function findByIdLanches() {
-  const id = document.querySelector('#idLanche').value;
+  const id = document.getElementById('idLanche').value;
 
   if (id == '') {
     localStorage.setItem('message', 'Digite um ID para pesquisar!');
@@ -60,8 +60,6 @@ async function findByIdLanches() {
   document.querySelector('.lanche-list').style.display = 'none';
   const lancheEscolhidoDiv = document.querySelector('#lancheEscolhido');
 
-
-
   lancheEscolhidoDiv.innerHTML = `
       <div class="lancheCardItem" id="lancheListaItem__${lanche._id}">
         <div>
@@ -82,7 +80,7 @@ async function findByIdLanches() {
         onclick="showModalDelete('${lanche._id}'>Excluir</button>
       </div>
     `;
-};
+}
 
 async function showModal(id = '') {
   if (id != '') {

@@ -5,7 +5,7 @@ import {
   createLanchesService,
   updateLanchesService,
   deleteLanchesService,
-} from '../services/lanches.services.js';
+} from '../services/lanches.service.js';
 
 export const getFindLanches = async (req, res) => {
   const allLanches = await findLanchesService();
