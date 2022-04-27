@@ -7,10 +7,11 @@
     <title>lanchonete</title>
     <link rel="stylesheet" href="../public/css/style.css" />
     <script src="https://kit.fontawesome.com/14f4815201.js" crossorigin="anonymous"></script>
+    <script src="../public/js/scritpt.js"></script>
   </head>
   <>
     <div class="page-head">
-      <h1>El Burger</h1>
+      <h1>Cowboy Burger</h1>
     </div>
     <div class="Home">
       <!-- Listagem de o Lanche pelo seu ID -->
@@ -20,7 +21,7 @@
         <!-- Área do form -->
         <div id="lanche-escolhido-input-espaco">
           <input
-            type="number"
+            type="text"
             id="idLanche"
             placeholder="Digite o ID do Lanche"
           />
@@ -46,12 +47,13 @@
       <section class="modal-overlay" id="overlay">
         <div class="modal">
           <div class="modal-header">
-            <h2>Cadastrar um Lanche</h2>
+            <h2 id="title-header-modal">Cadastrar um Lanche</h2>
             <a onclick="closeModal()" class="close-modal">x</a>
           </div>
-
+  
           <div class="modal-body">
             <div>
+              <input type="hidden" id="id" />
               <input
                 type="text"
                 name="nome"
@@ -59,24 +61,24 @@
                 placeholder="Nome do Lanche"
               />
               <input
-                type="text"
+                type="number"
                 name="preco"
                 id="preco"
                 placeholder="Preço do Lanche"
+              />
+              <input
+              type="text"
+              name="img"
+              id="img"
+              placeholder="Link da Foto do Lanche"
               />
               <textarea
                 type="text"
                 name="description"
                 id="description"
-                placeholder="Descrição do Lanche"
+                placeholder="Ingredientes do lanche"
                 rows="5"
               ></textarea>
-              <input
-                type="text"
-                name="img"
-                id="img"
-                placeholder="Link da Foto do Lanche"
-              />
               <select
                 name="tipo"
                 id="tipo"
@@ -86,7 +88,7 @@
               <option value="2">Frango</option>
               <option value="3">Vegan</option>
               </select>
-              <button class="default-button" onclick="createLanche()">
+              <button id="button-form-modal" onclick="submitLanche()">
                 Cadastrar
               </button>
             </div>

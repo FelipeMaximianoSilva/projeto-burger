@@ -2,12 +2,6 @@
 
 import { lanches } from '../model/lanches.js';
 
-// const postCreateLanchesController = (req, res) => {
-//   const lanche = req.body;
-//   const newLanche = lanchesService.createLanchesService(lanche);
-//   res.send(newLanche);
-// };
-
 export const findLanchesService = async () => {
   const lanche = await lanches.find();
   return lanche;

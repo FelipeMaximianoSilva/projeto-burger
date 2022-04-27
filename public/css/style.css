@@ -195,7 +195,7 @@ body {
 /*-------------------FORM-------------------*/
 /*------------------------------------------*/
 
-input[type='text'], [type='number'] {
+input[type='text'], [type='number'], select {
   width: 40%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -206,7 +206,7 @@ input[type='text'], [type='number'] {
   transition: width 0.4s ease-in-out;
 }
 
-input[type='number']:focus {
+input[type='text']:focus {
   width: 90%;
 }
 

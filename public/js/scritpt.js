@@ -1,29 +1,24 @@
 const baseUrl = 'http://localhost:3001/lanches';
+const msgAlert = document.querySelector('.msg-alert');
 
 // Pegar todas os lanches do backend
 async function findAlllanches() {
   const response = await fetch(`${baseUrl}/find-lanches`);
+
   const lanches = await response.json();
-  console.log('localizados os lanches');
 
   lanches.forEach((lanches) => {
-    document.getElementById('lancheList').insertAdjacentHTML(
+    document.querySelector('#lancheList').insertAdjacentHTML(
       // Primeiro parâmetro que é a posição
       'beforeend',
       // Segundo parâmetro que o conteúdo a ser adicionado
       `
-          <div class="lancheListaItem" id="lancheListaItem__${lanches.id}">
+          <div class="lancheListaItem" id="lancheListaItem__${lanches._id}">
             <div class="inside-card-space">
               <div class="lancheListaItem__nome">${lanches.nome}</div>
               <div class="lancheListaItem__preco">R$ ${lanches.preco}</div>
               <div class="lancheListaItem__descricao">
                 ${lanches.description}
-              </div>
-              <div class="lancheListaIcons">
-              <a><i class="fa-solid fa-pen-to-square" onclick="abrirModalEditar(${
-                lanches.id
-              })" style="color: black;"></i></a>
-              <a><i class="fa-solid fa-trash-can-xmark"></i></a>
               </div>
             </div>
             <img
@@ -40,17 +35,35 @@ async function findAlllanches() {
 findAlllanches();
 
 // Pegar um lanche pelo seu ID
-const findByIdLanches = async () => {
-  const id = document.getElementById('idLanche').value;
+async function findByIdLanches() {
+  const id = document.querySelector('#idLanche').value;
+
+  if (id == '') {
+    localStorage.setItem('message', 'Digite um ID para pesquisar!');
+    localStorage.setItem('type', 'danger');
+
+    closeMessageAlert();
+    return;
+  }
 
   const response = await fetch(`${baseUrl}/find-lanches/${id}`);
-
   const lanche = await response.json();
 
-  const lancheEscolhidoDiv = document.getElementById('lancheEscolhido');
+  if (lanche.message != undefined) {
+    localStorage.setItem('message', lanche.message);
+    localStorage.setItem('type', 'danger');
+    showMessageAlert();
+    return;
+  }
+
+  document.querySelector('.list-all').style.display = 'block';
+  document.querySelector('.lanche-list').style.display = 'none';
+  const lancheEscolhidoDiv = document.querySelector('#lancheEscolhido');
+
+
 
   lancheEscolhidoDiv.innerHTML = `
-      <div class="lancheCardItem" id="lancheListaItem__${lanche.id}">
+      <div class="lancheCardItem" id="lancheListaItem__${lanche._id}">
         <div>
           <div class="lancheCardItem__nome">${lanche.nome}</div>
           <div class="lancheCardItem__preco">R$ ${lanche.preco}</div>
@@ -61,10 +74,12 @@ const findByIdLanches = async () => {
           src=${lanche.img}
           alt=${`${lanche.nome}`}
         />
-        <button class="change-buttons">Editar</button>
+        <button class="change-buttons" onclick="showModal('${
+          lanche._id
+        }'>Editar</button>
         <button type="button"
-        id="deleteLancheButton"
-        onclick="abrirModalDelete()">Excluir</button>
+        class="change-buttons"
+        onclick="showModalDelete('${lanche._id}'>Excluir</button>
       </div>
     `;
 };
@@ -82,7 +97,7 @@ async function showModal(id = '') {
     document.querySelector('#description').value = lanche.description;
     document.querySelector('#preco').value = lanche.preco;
     document.querySelector('#img').value = lanche.img;
-    document.querySelector('#id').value = lanche.id;
+    document.querySelector('#id').value = lanche._id;
     document.querySelector('#tipo').value = lanche.tipo;
   } else {
     document.querySelector('#title-header-modal').innerText =
@@ -203,65 +218,3 @@ function showMessageAlert() {
 }
 
 showMessageAlert();
-
-// function abrirModalCadastro() {
-//   document.querySelector('.modal-overlay').style.display = 'flex';
-// }
-
-// function limparModal() {
-//   const nome = (document.querySelector('#nome').value = '');
-//   const preco = (document.querySelector('#preco').value = 0);
-//   const descricao = (document.querySelector('#description').value = '');
-//   const img = (document.querySelector('#img').value = '');
-// }
-
-// function fecharModalCadastro() {
-//   document.querySelector('.modal-overlay').style.display = 'none';
-
-//   limparModal();
-// }
-
-// async function createLanche() {
-//   const nome = document.querySelector('#nome').value;
-//   const preco = document.querySelector('#preco').value;
-//   const description = document.querySelector('#description').value;
-//   const img = document.querySelector('#img').value;
-
-//   const lanches = {
-//     nome,
-//     preco,
-//     description,
-//     img,
-//   };
-
-//   const response = await fetch(baseUrl + '/create', {
-//     method: 'post',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     mode: 'cors',
-//     body: JSON.stringify(lanches),
-//   });
-
-//   const novoLanche = await response.json();
-
-//   const html = `<div class="lancheListaItem">
-//     <div>
-//       <div class="lancheListaItem__nome">${novoLanche.nome}</div>
-//       <div class="lancheListaItem__preco">R$ ${novoLanche.preco}</div>
-//       <div class="lancheListaItem__descricao">${novoLanche.description}</div>
-//     </div>
-//     <img class="lancheListaItem__foto" src=${
-//       novoLanche.img
-//     } alt=${`${novoLanche.nome}`} />
-//   </div>`;
-
-//   document.getElementById('lancheList').insertAdjacentHTML('beforeend', html);
-
-//   console.log('Criou o lanche');
-//   fecharModalCadastro();
-// }
-
-// const deleteLanchesById = async () => {
-//   const id = document.getElementById('idLanche').value;
-// }
