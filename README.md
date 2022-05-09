@@ -1,4 +1,4 @@
-# Projeto Burg
+# Projeto Burger
 
 * [GET] Leitura de todos elementos;
 * [GET] Leitura de elementos individuais (por ID);
